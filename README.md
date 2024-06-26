@@ -1,30 +1,17 @@
-# React + TypeScript + Vite
+<!-- Component Creation:
+● Develop reusable components such as Header, Footer, Product Card, and Navigation Menu 
+using React.js and Tailwind CSS.
+● Ensure components follow best practices for performance and maintainability.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. State Management:
+● Implement state management using Redux for handling global state.
+● Demonstrate how you manage local component state versus global state.
+3. Responsive Design:
+● Ensure the interface is fully responsive across different devices and screen sizes.
+● Use Tailwind CSS to streamline the styling process.
+4. PWA Implementation:
+● Implement service workers to enable offline capabilities.
+● Ensure the application meets PWA standards for performance and user experience.
+5. Additional Features:
+● Implement a product listing page that fetches data from a mock API.
+● Include basic functionality such as adding items to a shopping cart and viewing the cart. -->
