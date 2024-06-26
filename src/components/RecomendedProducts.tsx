@@ -3,7 +3,13 @@ import "react-multi-carousel/lib/styles.css";
 import ProductCard from "./ProductCard";
 import { Product } from "../interfaces";
 
-const RelatedProducts = ({ products,type }: { products: Product[]; type: string }) => {
+const RelatedProducts = ({
+  products,
+  type,
+}: {
+  products: Product[];
+  type: string;
+}) => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -18,17 +24,20 @@ const RelatedProducts = ({ products,type }: { products: Product[]; type: string 
       items: 1,
     },
   };
+  console.log(type);
 
   return (
     <div className="mt-5">
-      <div className="text-2xl font-bold mb-5">{type}</div>
+      <div className="text-2xl font-bold mb-5"> Recommended</div>
       <Carousel
         responsive={responsive}
         containerClass="-mx-[10px]"
         itemClass="px-[10px]"
+        autoPlay={true}
+        autoPlaySpeed={1500}
       >
-        {products?.map((product) => (
-          <ProductCard key={product?.id} product={product} />
+        {[...products, ...products, ...products]?.map((product) => (
+          <ProductCard key={product?.id} product={product} type={type} />
         ))}
       </Carousel>
     </div>

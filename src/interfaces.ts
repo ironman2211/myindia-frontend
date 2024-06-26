@@ -1,9 +1,17 @@
 export interface Product {
-    id: number;
-    name: string;
+    id: string;
     linkName: string;
+    name: string;
     description: string;
-    image: string;
     price: number;
     discountedPrice: number;
+    images: Image[];
+    details: string[];
+  }
+export interface Image {
+    id: string;
+    attributes: {
+        name: string;
+        url: string;
+    };
 }

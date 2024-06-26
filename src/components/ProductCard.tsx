@@ -1,17 +1,19 @@
 import { Product } from "../interfaces";
+import { Link } from "../MyIndiaUtils";
 import { getDiscountedPricePercentage } from "../utils/helper";
 
 interface Props {
   product: Product;
+  type: string;
 }
-const ProductCard = ({ product }: Props) => {
+const ProductCard = ({ product, type }: Props) => {
   return (
-    <a href={`/product/${product.linkName}`} className=" rounded-lg">
+    <Link to={`/products/${type}/${product.id}`}>
       <div className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer rounded-lg">
         <div className="flex flex-col justify-between w-full h-[15rem]  rounded-lg">
           <img
             className="h-full w-full object-cover"
-            src={product.image}
+            src={product.images[0].attributes.url}
             alt={product.name}
           />
         </div>
@@ -38,7 +40,7 @@ const ProductCard = ({ product }: Props) => {
           </div>
         </div>
       </div>
-    </a>
+    </Link>
   );
 };
 

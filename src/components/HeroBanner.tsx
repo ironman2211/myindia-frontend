@@ -31,15 +31,6 @@ const carousel = [
     imageAlt:
       "https://utfs.io/f/48e51878-3592-44b2-9c7b-d062e595198a-imdbjx.jpg",
   },
-  //   {
-  //     id: "id",
-  //     name: "Smart Ring",
-  //     price: 1999,
-  //     description: "description",
-  //     image: "/slide-4.png",
-  //     imageAlt:
-  //       "https://utfs.io/f/16878892-cf9c-44cc-aade-947d33fae33a-1slxdv.jpg",
-  //   },
 ];
 
 const HeroBanner = () => {

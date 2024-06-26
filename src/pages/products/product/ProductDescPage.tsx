@@ -4,75 +4,28 @@ import ProductDetailsCarousel from "../../../components/ProductDetailsCarousel";
 import { useEffect, useState } from "react";
 import { getDiscountedPricePercentage } from "../../../utils/helper";
 import { VscDebugBreakpointDataUnverified } from "react-icons/vsc";
+import dummydata from "../../../data/index";
+import { Product } from "../../../interfaces";
 
-interface Image {
-  id: string;
-  attributes: {
-    name: string;
-    url: string;
-  };
-}
-const images: Image[] = [
-  {
-    id: "fsdfs",
-    attributes: {
-      name: "asdas",
-      url: "https://utfs.io/f/48e51878-3592-44b2-9c7b-d062e595198a-imdbjx.jpg",
-    },
-  },
-  {
-    id: "asdas",
-    attributes: {
-      name: "asdas",
-      url: "https://utfs.io/f/48e51878-3592-44b2-9c7b-d062e595198a-imdbjx.jpg",
-    },
-  },
-  {
-    id: "asdas",
-    attributes: {
-      name: "asdas",
-      url: "https://utfs.io/f/48e51878-3592-44b2-9c7b-d062e595198a-imdbjx.jpg",
-    },
-  },
-];
-interface Product {
-  id: string;
-  linkName: string;
-  name: string;
-  description: string;
-  price: number;
-  discountedPrice: number;
-  images: Image[];
-  details: string[];
-}
-const dummydata: Product[] = [
-  {
-    id: "874823jkasd",
-    linkName: "product-4",
-    name: "Product 4",
-    description: "Product 4 description",
-    details: ["Product 4 description", "Product 4 description"],
-    price: 400,
-    discountedPrice: 380,
-    images: images,
-  },
-  {
-    id: "874823jkass",
-    linkName: "product-4",
-    name: "Product 4",
-    description: "Product 4 description",
-    price: 400,
-    discountedPrice: 380,
-    images: images,
-    details: ["Product 4 description", "Product 4 description"],
-  },
-];
 const ProductDetails = () => {
+  const type = window.location.pathname.split("/")[2];
   const id = window.location.pathname.split("/")[3];
   const [product, setproduct] = useState<Product>();
 
   useEffect(() => {
-    setproduct(dummydata.find((p) => p.id == id));
+    switch (type) {
+      case "all":
+        setproduct(dummydata.all.find((p) => p.id == id));
+        break;
+      case "new":
+        setproduct(dummydata.new.find((p) => p.id == id));
+        break;
+      case "popular":
+        setproduct(dummydata.popular.find((p) => p.id == id));
+        break;
+      default:
+        break;
+    }
   }, []);
 
   return (
@@ -82,7 +35,7 @@ const ProductDetails = () => {
         <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]">
           {/* left column start */}
           {product?.images && (
-            <div className="w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-full mx-auto lg:mx-0">
+            <div className="w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-[500px] mx-auto lg:mx-0">
               <ProductDetailsCarousel images={product?.images} />
             </div>
           )}

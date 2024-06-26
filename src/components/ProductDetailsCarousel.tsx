@@ -1,13 +1,6 @@
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-
-interface Image {
-  id: string;
-  attributes: {
-    name: string;
-    url: string;
-  };
-}
+import { Image } from "../interfaces";
 
 interface Props {
   images: Image[];
@@ -20,7 +13,6 @@ const ProductDetailsCarousel = ({ images }: Props) => {
         showIndicators={false}
         showStatus={false}
         thumbWidth={60}
-
         className="productCarousel"
       >
         {images?.map((img) => (
@@ -31,12 +23,6 @@ const ProductDetailsCarousel = ({ images }: Props) => {
             className="rounded-xl outline-none"
           />
         ))}
-        {/* <img src="/p2.png" />
-                <img src="/p3.png" />
-                <img src="/p4.png" />
-                <img src="/p5.png" />
-                <img src="/p6.png" />
-                <img src="/p7.png" /> */}
       </Carousel>
     </div>
   );
