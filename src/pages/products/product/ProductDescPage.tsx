@@ -1,4 +1,3 @@
-import { IoMdHeartEmpty } from "react-icons/io";
 import Wrapper from "../../../components/Wrapper";
 import ProductDetailsCarousel from "../../../components/ProductDetailsCarousel";
 import { useEffect, useState } from "react";
