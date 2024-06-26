@@ -60,6 +60,6 @@ The following resources are necessary for this project:
 - Mock API
 
 - [x] Develop a responsive e-commerce website using React.js and Tailwind CSS.
-- [ ] Implement state management using Redux for handling global state.
-- [ ] Implement a product listing page that fetches data from a mock API.
-- [ ] Include basic functionality such as adding items to a shopping cart and viewing the cart.
+- [x] Implement state management using Redux for handling global state.
+- [x] Implement a product listing page that fetches data from a mock API.
+- [x] Include basic functionality such as adding items to a shopping cart and viewing the cart.

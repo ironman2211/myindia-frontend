@@ -15,3 +15,14 @@ export interface Image {
         url: string;
     };
 }
+
+export interface Cart {
+    id: string;
+    type: string;
+    image:string;
+    name: string;
+    description: string;
+    price: number;
+    discountedPrice: number;
+    quantity: number;
+  }

@@ -1,8 +1,9 @@
 import logo from "../assets/logo.png";
 import { FaCartShopping } from "react-icons/fa6";
-import { FaRegHeart } from "react-icons/fa";
 import { Link } from "../MyIndiaUtils";
+import { useCartContext } from "../context/Cartcontext";
 const Navbar = () => {
+  const { cart } = useCartContext();
   return (
     <div className=" flex w-[95vw] mx-auto h-[9vh] items-center justify-between rounded-lg border-[2px] bg-white/60 p-3 sm:p-8 text-black shadow-sm mb-5 fixed top-4 left-0 z-50 right-0">
       <Link to="/">
@@ -23,10 +24,16 @@ const Navbar = () => {
         <Link to="/products/all">Products</Link>
 
         <button className="flex items-center justify-center gap-3 text-sm sm:text-base">
-          <FaRegHeart />
+          {/* <FaRegHeart /> */}
 
           <Link to="/cart">
-            <FaCartShopping />
+            <div className="flex items-center justify-center gap-3 text-sm sm:text-base relative">
+              <div className="h-4 w-4 bg-red-500 rounded-full absolute -top-3 -right-3 text-[.8rem] flex items-center justify-center font-bold text-white">
+                {cart.length}
+              </div>
+
+              <FaCartShopping className="h-5 w-5" />
+            </div>
           </Link>
         </button>
       </div>

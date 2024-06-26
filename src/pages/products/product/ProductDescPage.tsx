@@ -5,12 +5,42 @@ import { useEffect, useState } from "react";
 import { getDiscountedPricePercentage } from "../../../utils/helper";
 import { VscDebugBreakpointDataUnverified } from "react-icons/vsc";
 import dummydata from "../../../data/index";
-import { Product } from "../../../interfaces";
+import { Cart, Product } from "../../../interfaces";
+import { useCartContext } from "../../../context/Cartcontext";
+import { FaArrowRight } from "react-icons/fa";
+import { IoMdRemoveCircleOutline } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const ProductDetails = () => {
-  const type = window.location.pathname.split("/")[2];
+  const type = window.location.pathname.split("/")[2].toLowerCase();
   const id = window.location.pathname.split("/")[3];
   const [product, setproduct] = useState<Product>();
+  const navigate = useNavigate();
+
+  const { cart, addCart, removeFromCart } = useCartContext();
+
+  console.log(cart);
+
+  const addToCart = (product: Product) => {
+    if (!cart.find((c) => c.id === product.id)) {
+      const newCartItem: Cart = {
+        type,
+        quantity: 1,
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        description: product.description,
+        image: product.images[0].attributes.url,
+        discountedPrice: product.discountedPrice,
+      };
+      addCart(newCartItem);
+    }
+  };
+
+  const checkInCart = (id: string) => {
+    const item = cart.find((c) => c.id === id);
+    return item ? true : false;
+  };
 
   useEffect(() => {
     switch (type) {
@@ -84,22 +114,44 @@ const ProductDetails = () => {
             {/* PRODUCT SIZE RANGE END */}
 
             {/* ADD TO CART BUTTON START */}
-            <button
-              className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
-              onClick={() => {}}
-            >
-              Add to Cart
-            </button>
+            {product && !checkInCart(product.id) ? (
+              <button
+                className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
+                onClick={() => addToCart(product)}
+              >
+                Added to Cart
+              </button>
+            ) : (
+              <div className="flex gap-5 items-center justify-center">
+                <button
+                  className="w-full py-4 rounded-full bg-violet-400 text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75 flex gap-5 items-center justify-center"
+                  onClick={() => navigate("/cart")}
+                >
+                  Go to Cart
+                  <FaArrowRight />
+                </button>
+                {product && (
+                  <button
+                    className="flex gap-2 items-center justify-center text-rose-800"
+                    onClick={() => removeFromCart(product.id)}
+                  >
+                    Remove
+                    <IoMdRemoveCircleOutline size={30} />
+                  </button>
+                )}
+              </div>
+            )}
+
             {/* ADD TO CART BUTTON END */}
 
             {/* WHISHLIST BUTTON START */}
-            <button className="w-full py-4 rounded-full border border-black text-lg font-medium transition-transform active:scale-95 flex items-center justify-center gap-2 hover:opacity-75 mb-10">
+            {/* <button className="w-full py-4 rounded-full border border-black text-lg font-medium transition-transform active:scale-95 flex items-center justify-center gap-2 hover:opacity-75 mb-10">
               Whishlist
               <IoMdHeartEmpty size={20} />
-            </button>
+            </button> */}
             {/* WHISHLIST BUTTON END */}
 
-            <div>
+            <div className="mt-6">
               <div className="text-lg font-bold mb-5">Product Details</div>
               <div className="markdown text-md mb-5">
                 <ul>
