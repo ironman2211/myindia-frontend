@@ -1,3 +1,5 @@
+// @ts-ignore
+import React from "react";
 import { useEffect, useState } from "react";
 import Footer from "../../components/Footer";
 import HeroBanner from "../../components/HeroBanner";

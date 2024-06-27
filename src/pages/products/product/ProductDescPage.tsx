@@ -1,3 +1,5 @@
+// @ts-ignore
+import React from "react";
 import Wrapper from "../../../components/Wrapper";
 import ProductDetailsCarousel from "../../../components/ProductDetailsCarousel";
 import { useEffect, useState } from "react";

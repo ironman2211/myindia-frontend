@@ -1,3 +1,5 @@
+// @ts-ignore
+import React from "react";
 import { useEffect, useState } from "react";
 import Products from "../../components/Products";
 import RecomendedProducts from "../../components/RecomendedProducts";

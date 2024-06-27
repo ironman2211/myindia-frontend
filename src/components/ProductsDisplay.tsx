@@ -1,3 +1,5 @@
+// @ts-ignore
+import React from "react";
 import { Product } from "../interfaces";
 import { Link } from "../MyIndiaUtils";
 import ProductCard from "./ProductCard";

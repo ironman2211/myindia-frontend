@@ -1,3 +1,5 @@
+// @ts-ignore
+import React from "react";
 import CartItem from "../../components/CartItem";
 import Wrapper from "../../components/Wrapper";
 import { useCartContext } from "../../context/Cartcontext";
