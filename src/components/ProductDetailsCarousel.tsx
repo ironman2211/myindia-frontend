@@ -8,7 +8,7 @@ interface Props {
 }
 const ProductDetailsCarousel = ({ images }: Props) => {
   return (
-    <div className="text-white text-[20px] w-full max-w-[1360px] mx-auto sticky top-[50px] ">
+    <div className="text-white text-[20px] w-full max-w-[1360px] h-full mx-auto sticky top-[50px] ">
       <Carousel
         infiniteLoop={true}
         showIndicators={false}

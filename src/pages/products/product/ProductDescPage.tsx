@@ -10,11 +10,13 @@ import { useCartContext } from "../../../context/Cartcontext";
 import { FaArrowRight } from "react-icons/fa";
 import { IoMdRemoveCircleOutline } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import RelatedProducts from "../../../components/RecomendedProducts";
 
 const ProductDetails = () => {
   const type = window.location.pathname.split("/")[2].toLowerCase();
   const id = window.location.pathname.split("/")[3];
   const [product, setproduct] = useState<Product>();
+  const [relatedProducts, setrelatedProducts] = useState<Product[]>();
   const navigate = useNavigate();
 
   const { cart, addCart, removeFromCart } = useCartContext();
@@ -46,12 +48,15 @@ const ProductDetails = () => {
     switch (type) {
       case "all":
         setproduct(dummydata.all.find((p) => p.id == id));
+        setrelatedProducts(dummydata.all.slice(2, 10));
         break;
       case "new":
         setproduct(dummydata.new.find((p) => p.id == id));
+        setrelatedProducts(dummydata.new.slice(2, 10));
         break;
       case "popular":
         setproduct(dummydata.popular.find((p) => p.id == id));
+        setrelatedProducts(dummydata.popular.slice(2, 10));
         break;
       default:
         break;
@@ -60,30 +65,22 @@ const ProductDetails = () => {
 
   return (
     <div className="w-full md:py-20">
-      {/* <ToastContainer /> */}
       <Wrapper>
         <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]">
-          {/* left column start */}
           {product?.images && (
             <div className="w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-[500px] mx-auto lg:mx-0">
               <ProductDetailsCarousel images={product?.images} />
             </div>
           )}
-          {/* left column end */}
-
-          {/* right column start */}
           <div className="flex-[1] py-3">
-            {/* PRODUCT TITLE */}
             <div className="text-[34px] font-semibold mb-2 leading-tight">
               {product?.name}
             </div>
 
-            {/* PRODUCT SUBTITLE */}
             <div className="text-lg font-semibold mb-5">
               {product?.description}
             </div>
 
-            {/* PRODUCT PRICE */}
             <div className="flex items-center">
               <p className="mr-2 text-lg font-semibold">
                 MRP : &#8377;{product?.discountedPrice}
@@ -111,9 +108,6 @@ const ProductDetails = () => {
               {`(Also includes all applicable duties)`}
             </div>
 
-            {/* PRODUCT SIZE RANGE END */}
-
-            {/* ADD TO CART BUTTON START */}
             {product && !checkInCart(product.id) ? (
               <button
                 className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
@@ -142,14 +136,10 @@ const ProductDetails = () => {
               </div>
             )}
 
-            {/* ADD TO CART BUTTON END */}
-
-            {/* WHISHLIST BUTTON START */}
             {/* <button className="w-full py-4 rounded-full border border-black text-lg font-medium transition-transform active:scale-95 flex items-center justify-center gap-2 hover:opacity-75 mb-10">
               Whishlist
               <IoMdHeartEmpty size={20} />
             </button> */}
-            {/* WHISHLIST BUTTON END */}
 
             <div className="mt-6">
               <div className="text-lg font-bold mb-5">Product Details</div>
@@ -165,43 +155,13 @@ const ProductDetails = () => {
               </div>
             </div>
           </div>
-          {/* right column end */}
         </div>
-
-        {/* <RelatedProducts products={products} /> */}
+        {relatedProducts && (
+          <RelatedProducts products={relatedProducts} type={type} />
+        )}
       </Wrapper>
     </div>
   );
 };
 
 export default ProductDetails;
-
-// export async function getStaticPaths() {
-//     const products = await fetchDataFromApi("/api/products?populate=*");
-//     const paths = products?.data?.map((p) => ({
-//         params: {
-//             slug: p.attributes.slug,
-//         },
-//     }));
-
-//     return {
-//         paths,
-//         fallback: false,
-//     };
-// }
-
-// export async function getStaticProps({ params: { slug } }) {
-//     const product = await fetchDataFromApi(
-//         `/api/products?populate=*&filters[slug][$eq]=${slug}`
-//     );
-//     const products = await fetchDataFromApi(
-//         `/api/products?populate=*&[filters][slug][$ne]=${slug}`
-//     );
-
-//     return {
-//         props: {
-//             product,
-//             products,
-//         },
-//     };
-// }
