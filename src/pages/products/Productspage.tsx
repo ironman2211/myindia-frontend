@@ -1,4 +1,3 @@
-// @ts-ignore
 import React from "react";
 import { useEffect, useState } from "react";
 import Products from "../../components/Products";
@@ -28,7 +27,6 @@ const Productspage = () => {
         break;
     }
   }, []);
-  console.log(products);
 
   return (
     <div className="w-full  md:px-10 md:py-5 px-6 py-5 mt-20">

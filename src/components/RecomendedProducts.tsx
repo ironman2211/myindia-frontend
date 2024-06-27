@@ -1,4 +1,3 @@
-// @ts-ignore
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -26,7 +25,6 @@ const RelatedProducts = ({
       items: 1,
     },
   };
-  console.log(type);
 
   return (
     <div className="mt-5">

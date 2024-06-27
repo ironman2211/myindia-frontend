@@ -42,7 +42,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }, []); // Ensure this effect runs only once on mount
 
   useEffect(() => {
-    // console.log("Current Cart State:", cart); // Log current cart state after update
     localStorage.setItem("cart", JSON.stringify(cart)); // Save cart to localStorage on every state update
   }, [cart]); // Depend on cart to update when cart changes
 

@@ -1,4 +1,3 @@
-// @ts-ignore
 import React from "react";
 import logo from "../assets/logo.png";
 import { FaCartShopping } from "react-icons/fa6";
@@ -19,7 +18,7 @@ const Navbar = () => {
         className={`flex items-center justify-between gap-6 rounded-full px-4 py-2 text-sm 
             "bg-black/5" }`}
       >
-        <Link to="/login">Login</Link>
+        {/* <Link to="/login">Login</Link> */}
 
         <Link to="/about">About</Link>
 
@@ -30,9 +29,11 @@ const Navbar = () => {
 
           <Link to="/cart">
             <div className="flex items-center justify-center gap-3 text-sm sm:text-base relative">
-              <div className="h-4 w-4 bg-red-500 rounded-full absolute -top-3 -right-3 text-[.8rem] flex items-center justify-center font-bold text-white">
-                {cart.length}
-              </div>
+              {cart.length > 0 ? (
+                <div className="h-4 w-4 bg-red-500 rounded-full absolute -top-3 -right-3 text-[.8rem] flex items-center justify-center font-bold text-white">
+                  {cart.length}
+                </div>
+              ) : null}
 
               <FaCartShopping className="h-5 w-5" />
             </div>

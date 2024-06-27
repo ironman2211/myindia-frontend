@@ -1,4 +1,3 @@
-// @ts-ignore
 import React from "react";
 const index = () => {
   const page = window.location.pathname.split("/")[1];
